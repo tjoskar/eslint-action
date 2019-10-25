@@ -9,7 +9,8 @@ const {
   GITHUB_WORKSPACE,
   GITHUB_ACTION: actionName,
   FILE_PATTERN: filePattern,
-  EXTENSIONS: extensions
+  EXTENSIONS: extensions,
+  DEBUG
 } = process.env;
 
 const [ owner, repo ] = GITHUB_REPOSITORY.split('/');
@@ -17,20 +18,25 @@ const [ owner, repo ] = GITHUB_REPOSITORY.split('/');
 const github = new GitHub(GITHUB_TOKEN);
 
 async function createCheck() {
-  const { data: { id } } = await github.checks.create({
+  const data = {
     started_at: new Date(),
     name: actionName,
     head_sha: headSha,
     status: 'in_progress',
     owner,
     repo
-  });
+  };
+  if (DEBUG) {
+    console.log('createCheck: ', data);
+    return 1;
+  }
+  const { data: { id } } = await github.checks.create(data);
 
   return id;
 }
 
 async function updateCheck(id, conclusion, output) {
-  await github.checks.update({
+  const data = {
     name: actionName,
     check_run_id: id,
     completed_at: new Date(),
@@ -39,7 +45,12 @@ async function updateCheck(id, conclusion, output) {
     owner,
     repo,
     status: 'completed'
-  });
+  };
+  if (DEBUG) {
+    console.log('updateCheck: ', data);
+    return;
+  }
+  await github.checks.update(data);
 }
 
 function runEslint() {
