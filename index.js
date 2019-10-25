@@ -54,8 +54,12 @@ async function updateCheck(id, conclusion, output) {
 }
 
 function runEslint() {
-  const cli = new eslint.CLIEngine({ extensions: extensions.split(',').map(e => e.trim()) });
-  const report = cli.executeOnFiles(filePattern.split(',').map(e => e.trim()));
+  const ext = extensions.split(',').map(e => e.trim());
+  const patterns = filePattern.split(',').map(e => e.trim());
+  console.log(`Run eslint on ${patterns} with extensions of ${ext}`);
+
+  const cli = new eslint.CLIEngine({ extensions: ext });
+  const report = cli.executeOnFiles(patterns);
   const { results, errorCount, warningCount } = report;
 
   const levels = ['', 'warning', 'failure'];
