@@ -1,0 +1,24 @@
+name: Node CI
+
+on: ['push']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: ⬇️ Install
+        run: npm ci
+        env:
+          CI: true
+      - name: 🚥 Eslint
+        run: node index.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILE_PATTERN: '.'
+          EXTENSIONS: '.js'
