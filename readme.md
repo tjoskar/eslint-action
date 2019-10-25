@@ -11,7 +11,7 @@ npm install tjoskar/eslint-action
 ## Example usage
 
 ```
-- name: ESLint
+- name: 🚥 ESLint
   run: npx eslint-action
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
