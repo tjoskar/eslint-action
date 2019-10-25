@@ -44,7 +44,7 @@ async function updateCheck(id, conclusion, output) {
 
 function runEslint() {
   const cli = new eslint.CLIEngine({ extensions: extensions.split(',').map(e => e.trim()) });
-  const report = cli.executeOnFiles([ filePattern.split(',').map(e => e.trim()) ]);
+  const report = cli.executeOnFiles(filePattern.split(',').map(e => e.trim()));
   const { results, errorCount, warningCount } = report;
 
   const levels = ['', 'warning', 'failure'];
