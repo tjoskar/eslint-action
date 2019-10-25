@@ -10,13 +10,13 @@ npm install tjoskar/eslint-action
 
 ## Example usage
 
-```
+```yml
 - name: 🚥 ESLint
   run: npx eslint-action
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    FILE_PATTERN: 'src'
-    EXTENSIONS: '.js, .jsx, .ts, .tsx'
+    FILE_PATTERN: '.' # Default value
+    EXTENSIONS: '.js, .jsx, .ts, .tsx' # Default value
 ```
 
 ## TODO:

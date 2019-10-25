@@ -8,8 +8,8 @@ const {
   GITHUB_TOKEN,
   GITHUB_WORKSPACE,
   GITHUB_ACTION: actionName,
-  FILE_PATTERN: filePattern,
-  EXTENSIONS: extensions,
+  FILE_PATTERN: filePattern = '.',
+  EXTENSIONS: extensions = '.js, .jsx, .ts, .tsx',
   DEBUG
 } = process.env;
 
