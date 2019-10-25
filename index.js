@@ -82,7 +82,7 @@ function runEslint() {
   }
 
   return {
-    conclusion: errorCount > 0 ? 'failure' : 'success',
+    conclusion: (errorCount + warningCount) > 0 ? 'failure' : 'success',
     output: {
       title: actionName,
       summary: `${errorCount} error(s), ${warningCount} warning(s) found`,
