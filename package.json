@@ -1,0 +1,21 @@
+{
+  "name": "@tjoskar/eslint-action",
+  "version": "1.0.0",
+  "description": "Github action for linting your code",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": "./index.js",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/github": "^1.1.0"
+  },
+  "peerDependencies": {
+    "eslint": ">6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1"
+  }
+}

@@ -1,0 +1,14 @@
+name: 'Eslint action'
+description: 'Lint your code with eslint'
+inputs:
+  file-pattern:
+    description: 'File pattern for eslint'
+    required: false
+    default: '.'
+  extensions:
+    description: 'Extensions for eslint'
+    required: false
+    default: '.js, .jsx, .ts, .tsx'
+runs:
+  using: 'node12'
+  main: 'index.js'
